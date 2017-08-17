@@ -5,4 +5,4 @@ Steps to run
   - open terminal
   - go to root 'cd Tokopedia'
   - run 'npm-install'
-  - run 'react-native run-ios'
+  - run 'react-native run-ios' (make sure react-native cli is installed)
