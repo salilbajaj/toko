@@ -48,7 +48,7 @@ class App extends Component {
 	reArrange(){
 		
 		let arrC=arr.splice(8,arr.length-1);
-		for(var i=arrC.length-1;i==0;i--){
+		for(var i=arrC.length-1;i>-1;i--){
 			arr.unshift(arrC[i]);
 			
 			if(i==0){
