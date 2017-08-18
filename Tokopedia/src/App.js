@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -14,8 +16,6 @@ const devHeight=Dimensions.get('window').height;
 var arr=['a','b','c','d','e','f','g','h','i'];
 class App extends Component {
 	
-	
-
 	constructor(props){
 		super(props)
 		this.state={
@@ -32,7 +32,7 @@ class App extends Component {
 	makeGrid(){
 		let arrB=[];
 		// could have used splice here .Loop was not needed. But wrote it in solution I gave. So using loop
-		for(i=0;i<arr.length;i++){				
+		for(var i=0;i<arr.length;i++){				
 			if(i==8)
 				break;
 
@@ -45,18 +45,22 @@ class App extends Component {
 		})
 	}
 
-	reArrange(){
-		
-		let arrC=arr.splice(8,arr.length-1);
-		for(var i=arrC.length-1;i>-1;i--){
-			arr.unshift(arrC[i]);
+	reArrange(){		
+		let temp=[];
+		let maxShow=8;
+		let rotation=(arr.length)-maxShow;
+
+		for(var i=arr.length-1;i>-1;i--){        // Using loop instead of array functions.
+			let rI=i+rotation;					// forming new array 'temp' with rotated index. 
+			if(rI>=arr.length)
+				rI=rI-arr.length;
 			
-			if(i==0){
-				this.makeGrid();
+				temp[rI]=arr[i];
 			}
-		}
-		
+			arr=temp;							// updating original array 
+			this.makeGrid();			
 	}
+
 
 	render(){
 		
