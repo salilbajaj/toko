@@ -19,7 +19,7 @@ class App extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			items:[],
+			items:arr,
 			loading:true
 		}
 		this.reArrange=this.reArrange.bind(this);
@@ -27,7 +27,6 @@ class App extends Component {
 
 	componentDidMount(){
 		this.setState({
-			items:arr,
 			loading:false
 		})
 	}
