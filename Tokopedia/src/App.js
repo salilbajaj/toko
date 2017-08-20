@@ -26,44 +26,36 @@ class App extends Component {
 	}
 
 	componentDidMount(){
-		this.makeGrid();
-	}
-
-	makeGrid(){
-		let arrB=[];
-		// could have used splice here .Loop was not needed. But wrote it in solution I gave. So using loop
-		for(var i=0;i<arr.length;i++){				
-			if(i==8)
-				break;
-
-			arrB.push(arr[i])
-		}
-		
 		this.setState({
-			items:arrB,
+			items:arr,
 			loading:false
 		})
 	}
 
-	reArrange(){		
+	reArrange(){
 		let temp=[];
 		let maxShow=8;
-		let rotation=(arr.length)-maxShow;
+		let rotation=(arr.length)-maxShow; 
 
 		for(var i=arr.length-1;i>-1;i--){        // Using loop instead of array functions.
 			let rI=i+rotation;					// forming new array 'temp' with rotated index. 
 			if(rI>=arr.length)
-				rI=rI-arr.length;
+				rI=rI-arr.length; 
 			
-				temp[rI]=arr[i];
+				temp[rI]=arr[i]; 
 			}
 			arr=temp;							// updating original array 
-			this.makeGrid();			
+				
+		this.setState({
+			items:arr,
+			loading:false
+		})
 	}
 
+	
 
-	render(){
-		
+
+	render(){	
 		if(this.state.loading){
         return(
             <View style={styles.loader}>
@@ -73,11 +65,11 @@ class App extends Component {
       }
 		return (
 			<View style={styles.container} >
-			{this.state.items.map((item)=><View style={styles.box} key={item}><Text> {item} </Text></View>
-			)
-		}
-			<View style={styles.box}>
-			<Button onPress={this.reArrange} title="Re-arrange" />
+
+			{this.state.items.map((item,index)=> index<8 ? <View style={styles.box} key={item}><Text> {item} </Text></View>: null)}
+
+				<View style={styles.box}>
+					<Button onPress={this.reArrange} title="Re-arrange" />
 				</View>
 			</View>
 			)
